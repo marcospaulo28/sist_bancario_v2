@@ -39,7 +39,8 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
         print("\n*** Operação falhou! Número máximo de saues excedido. ***")
 
     elif valor > 0:
-        saldo -= valorextrato += f"Saque:\t\tR$ {valor:.2f}\n"
+        saldo -= valor 
+        extrato += f"Saque:\t\tR$ {valor:.2f}\n"
         numero_saques += 1
         print("\n*** Saque realizado com sucesso! ***")
 
@@ -50,8 +51,8 @@ def sacar(*, saldo, valor, extrato, limite, numero_saques, limite_saques):
 
 def exibir_extrato(saldo, / , *, extrato):
     print("\n*************** EXTRATO ****************")
-    PRINT("Não foram realizadas movimentações." if not extrato else extrato)
-    print(f"\SAldo:\t\tR$ {saldo:.2f}")
+    print("Não foram realizadas movimentações." if not extrato else extrato)
+    print(f"Saldo:\t\tR$ {saldo:.2f}")
     print("****************************************")
 
 def criar_cliente(clientes):
@@ -89,7 +90,7 @@ def listar_contas(contas):
         linha = f"""\
             Agência:\t{conta['agencia']}
             C/C:\t\t{conta['numero_conta']}
-            Titular:\t{conta['usuario']['nome']}
+            Titular:\t{conta['cliente']['nome']}
         """
         print("=" * 100)
         print(textwrap.dedent(linha))
@@ -137,3 +138,14 @@ def main():
 
             if conta:
                 contas.append(conta)
+
+        elif opcao == "lc":
+            listar_contas(contas)
+
+        elif opcao == "q":
+            break
+        
+        else:
+            print("Operação invalida, por favor selecione a operação desejada.")
+
+main()
